@@ -1,6 +1,12 @@
+import { useState } from "react";
+
 function NavBar() {
+    let total = 25000;
+    let formateado = total.toLocaleString('es-CL');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     return (
-        <nav class="w-100vw relative bg-black after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10">
+        <nav class="w-100vw relative bg-grey-400 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10">
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div class="relative flex h-16 items-center justify-between">
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -20,26 +26,36 @@ function NavBar() {
                             <img src="./src/Assets/Img/Logo_gotharo.png" alt="Your Company" class="h-8 w-auto" />
                         </div>
                         <div class="hidden sm:ml-6 sm:block">
-                            <div class="flex space-x-4">
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Home</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Profile</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Logout</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Login</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Register</a>
+                            <div className="flex space-x-4">
+                                <button className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"> Home </button>
+
+                                {isLoggedIn ? (
+                                    <>
+                                        <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">🔓 Profile</a>
+                                        <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">🔒 Logout</a>
+                                    </>
+                                ) : (
+                                    <>
+                                        <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">🔐 Login</a>
+                                        <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">🔐 Register</a>
+                                    </>
+                                )}
                             </div>
+
+
                         </div>
                     </div>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                        <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-                            <span class="absolute -inset-1.5"></span>
-                            <span class="sr-only">View notifications</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                                <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
+                        <p className="mr-2 text-white " >Token</p>
+                        <input
+                            type="checkbox"
+                            checked={isLoggedIn}
+                            onChange={(e) => setIsLoggedIn(e.target.checked)}
+                            className="form-checkbox h-5 w-5 text-yellow-500"
+                        />
 
-                        <button class="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 text-white">
-                            Total: $25.000
+                        <button class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                            Total: {formateado}
                         </button>
 
                     </div>

@@ -1,7 +1,7 @@
 function CardPizza({ name, price, ingredients, img }) {
     return (
         <div className = "flex">
-            <div className="flex flex-col m-4 h-130 rounded overflow-hidden shadow-lg bg-white">
+            <div className="flex flex-col m-4 h-135 rounded overflow-hidden shadow-lg bg-white">
                 <img className="w-full h-48 object-cover" src={img} alt="Pizza Napolitana" />
                 <div className="px-6 py-4">
                     <h2 className="font-bold text-xl mb-2 text-black">{name}</h2>
@@ -14,7 +14,7 @@ function CardPizza({ name, price, ingredients, img }) {
                     <p className="text-lg font-bold text-green-700">Precio: {price}</p>
                 </div>
                 <div className="px-6 pt-4 pb-6 flex justify-center">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2 ">
+                    <button class="bg-white text-black hover:bg-blue-600 font-bold py-2 px-4 rounded m-2 border-[2px]">
                         Ver Más 👀
                     </button>
                     <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2">
